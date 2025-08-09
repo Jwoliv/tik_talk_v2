@@ -1,0 +1,24 @@
+<div class="profile-card">
+  <div class="profile-card__info">
+    <img [src]="profile.avatarUrl | imgUrl"  alt="">
+
+    <div class="profile-card__names names">
+      <strong class="names__name">{{ profile.firstName }} {{ profile.lastName }}</strong>
+      <span class="names__login">{{ profile.username }}</span>
+    </div>
+  </div>
+
+  <div class="profile-card__summary">
+    {{ profile.description }}
+  </div>
+  <div class="profile-card__skills skills">
+    @for (skill of profile.stack; track skill) {
+      <div class="skills__skill skills__active">{{ skill }}</div>
+    }
+  </div>
+  <div class="profile-card__buttons buttons">
+    <button type="button" class="buttons_write_button primary-button">
+      Написать
+    </button>
+  </div>
+</div>

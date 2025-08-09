@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark-color: #000000;
+  --light-color: #ffffff;
+  --primary-color: #AE7AFF;
+}
+
+body {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: none;
+  text-align: center;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+}
