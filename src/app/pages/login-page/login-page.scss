@@ -1,0 +1,21 @@
+:host {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100dvh;
+  align-items: center;
+  width: 1112px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 60px;
+    margin-bottom: 60px;
+  }
+}
+
+
+.login-form {
+  width: 440px;
+  &__enter-button {
+    width: 100%;
+  }
+}

@@ -12,4 +12,8 @@ export class ProfileService {
   getTestProfiles() {
     return this.http.get<ProfileCardDto[]>(`${Constants.BASE_PATH_API}/account/test_accounts`)
   }
+
+  getPersonalProfile() {
+    return this.http.get(`${Constants.BASE_PATH_API}/account/me`)
+  }
 }

@@ -1,0 +1,25 @@
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="sendLoginRequest($event)" action=''>
+  <h1>Вход</h1>
+
+  <label class="primary-label mb16">
+    <span>Telegram username</span>
+    <input type="text"
+           placeholder="Введите логин"
+           class="primary-input"
+           formControlName="username"
+    >
+  </label>
+
+
+  <label class="primary-label mb32">
+    <span>Password</span>
+    <input type="password"
+           placeholder="Введите пароль"
+           class="primary-input"
+           formControlName="password"
+    >
+  </label>
+
+  <button class="primary-button login-form__enter-button" type="submit">Войти</button>
+</form>
+<img src="/assets/svg/logo_login.svg" alt="">

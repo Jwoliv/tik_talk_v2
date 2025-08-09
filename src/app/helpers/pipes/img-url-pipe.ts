@@ -7,7 +7,6 @@ import Constants from '../http/urls';
 export class ImgUrlPipe implements PipeTransform {
 
   transform(value: string | null): string | null {
-    console.log(value);
     if (!value) return null
     return Constants.BASE_PATH_API + '/' + value;
   }
