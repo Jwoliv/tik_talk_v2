@@ -36,7 +36,7 @@ export class LoginPage {
     this.authService.getTokenByLogin(loginRequest).subscribe({
       next: (response: TokenResponse) => {
         this.tokenResponse = response
-        this.authService.saveCookie(response);
+        this.authService.saveTokenInCookie(response);
         this.router.navigate(['/search'])
       }
     });

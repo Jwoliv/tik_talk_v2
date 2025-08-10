@@ -3,8 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import Constants from '../../helpers/http/urls';
 import {LoginRequest} from '../../interfaces/model/login-request';
 import {TokenResponse} from '../../interfaces/model/token-response';
-import {tap} from 'rxjs';
+import {catchError, EMPTY, tap} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class AuthService {
   http = inject(HttpClient);
   cookieService = inject(CookieService)
   tokenResponse?: TokenResponse
+  router = inject(Router);
 
   get isAuthenticated(): boolean {
     if (!this.tokenResponse?.access_token) {
@@ -37,10 +39,26 @@ export class AuthService {
   }
 
   public refreshAccessToken() {
+    if (!this.tokenResponse?.refresh_token) {
+      console.warn('No refresh token found, redirecting to login');
+      this.router.navigate(['/login']);
+      return EMPTY;
+    }
 
+    return this.http.post<TokenResponse>(
+      `${Constants.BASE_PATH_API}/auth/refresh`,
+      { refresh_token: this.tokenResponse.refresh_token }
+    ).pipe(
+      tap(response => this.tokenResponse = response),
+      catchError(err => {
+        console.error('Failed to refresh access token', err);
+        this.router.navigate(['/login']);
+        return EMPTY;
+      })
+    );
   }
 
-  public saveCookie(response: TokenResponse) {
+  public saveTokenInCookie(response: TokenResponse) {
     this.cookieService.set("access_token", response.access_token);
     this.cookieService.set("refresh_token", response.refresh_token);
     this.cookieService.set("token_type", response.token_type);
@@ -54,3 +72,5 @@ export class AuthService {
     });
   }
 }
+// lk_bohdan
+// MUmMX78lJj
