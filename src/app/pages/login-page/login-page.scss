@@ -19,3 +19,35 @@
     width: 100%;
   }
 }
+
+.primary-label {
+  div {
+    display: flex;
+  }
+  input {
+    min-width: 100%;
+  }
+}
+
+.input-btn {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  right: 30px;
+  background: none;
+  color: #fff;
+  border: none;
+  svg {
+    path {
+      fill: var(--light-color);
+    }
+  }
+}
+
+.input-btn.active {
+  svg {
+    path {
+      fill: var(--primary-color);
+    }
+  }
+}
