@@ -30,8 +30,8 @@
 </div>
 
 @if (personalProfile$ | async; as personalProfile) {
-  <div class="sidebar-personal-profile">
-    <img [src]="personalProfile.avatarUrl | imgUrl" class="sidebar-personal-profile__img" alt="">
+  <footer class="sidebar-personal-profile">
+    <img [src]="personalProfile.avatarUrl | imgUrl" class="sidebar-personal-profile__img" alt="N/A">
     <a href="/profile" class="sidebar-personal-profile__title">{{ personalProfile.username }}</a>
     <a class="sidebar-personal-profilee__settings">
       <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
@@ -45,5 +45,5 @@
         </defs>
       </svg>
     </a>
-  </div>
+  </footer>
 }
